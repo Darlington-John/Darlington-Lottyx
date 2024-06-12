@@ -1,15 +1,17 @@
 
 import splashDarkImg from "./../assets/images/splashDark.png"
-import nigImg from "./../assets/images/nig.png"
+import nigImg from "./../assets/icons/nig.png"
 import arrDownImg from "./../assets/icons/arrDown.png"
 import eyeOpenImg from "./../assets/icons/eyeOpen.png"
 import eyeCloseImg from "./../assets/icons/eyeClose.png"
 import dangerIcon from "./../assets/icons/danger.svg"
 import warningIcon from "./../assets/icons/warning.svg"
-import googleImg from "./../assets/images/google.png"
+import googleImg from "./../assets/icons/google.png"
 
 import { useCallback, useState, useRef } from 'react';
 import useForm from "~/components/hooks/useForm"
+import { Link, useNavigate } from "@remix-run/react"
+import { UserButton } from "@clerk/remix";
 
 
 const CreateAcct = () => {
@@ -32,17 +34,17 @@ const CreateAcct = () => {
 
 
 
-
+  const navigate = useNavigate();
   const validateForm = () => {
     let valid = true;
   
-    // Validate phone number
+    
     if (formState.number.trim() === '') {
       setErrorMessage('Phone number is required.');
       valid = false;
     }
   
-    // Validate email
+    
     const trimmedEmail = formState.email.trim();
     if (trimmedEmail === '') {
       setErrorEmailMessage('Email is required.');
@@ -56,13 +58,13 @@ const CreateAcct = () => {
       }
     }
   
-    // Validate first name
+    
     if (formState.firstName.trim() === '') {
       setErrorfirstNameMessage('First name is required.');
       valid = false;
     }
   
-    // Validate surname
+    
     if (formState.surname.trim() === '') {
       setErrorSurnameMessage('Surname is required.');
       valid = false;
@@ -73,7 +75,12 @@ setErrorPwdMessage('Password  is required.');
     }
     return valid;
   };
-  
+  const handleSubmit = () => {
+    if (validateForm()) {
+      
+      navigate('/discover'); 
+    }
+  };
 
   const handleChange = (e) => {
     const text = e.target.value;
@@ -250,7 +257,7 @@ className="w-5  h-5"
       </div>
 
 
-        <div onClick={validateForm}
+        <div onClick={handleSubmit}
         className="text-base text-[#fff] w-full  py-1 px-2  bg-[#18A551] items-center rounded-md flex justify-center">
 <h1  className="text-white text-base py-2 text-center">Continue</h1>
         </div>
@@ -259,6 +266,9 @@ className="w-5  h-5"
 </div>
 <div  className="px-6 gap-4 items-center flex flex-col">
 <h1 className="text-white text-xs">- OR CREATE ACCOUNT WITH -</h1>
+
+<UserButton afterSignOutUrl="/"/>
+<Link to="/sign-in" className="w-full">
 <div className="w-full bg-[#C0F8D6] p-4 items-center justify-center gap-2 flex-row rounded-md flex">
       <img
        alt="" src={googleImg}
@@ -267,6 +277,7 @@ className="w-5  h-5"
    <h1  className="text-base text-[#05662C] font-semibold">   Google</h1>
 
 </div>
+</Link>
 </div>
 
 </div>

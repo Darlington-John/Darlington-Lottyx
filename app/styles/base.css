@@ -6,4 +6,41 @@
 * {
     font-family: 'Jost';
 }
-
+/* .cl-button {
+    background-color: #C0F8D6;
+    color:#18A551;
+} */
+.cl-headerTitle {
+    font-size: 23px;
+    font-weight: 600;
+}
+.cl-headerSubtitle {
+    font-size: 15px;
+}
+.cl-formFieldLabel {
+    font-weight: 400;
+}
+.cl-formFieldInput, .cl-input {
+    background-color: #2D312F;
+}
+body {
+    background-color: black;
+}
+.cl-selectButton, .cl-internal-167tq3k{
+    background-color: #2D312F;
+}
+.cl-cardBox, .cl-signUp-start,  .cl-signIn-start{
+    background-color: rgba(0, 0, 255, 0);
+}
+.cl-formButtonPrimary{
+    background-color: #18A551;
+    color: white;
+    border: none;
+ 
+}
+.cl-internal-n8erpa[data-variant="solid"][data-color="primary"] {
+    box-shadow: none;
+}
+.cl-internal-w4f4gh {
+    background: linear-gradient(rgba(255, 255, 255, .03), rgba(255, 255, 255, .03)), linear-gradient(rgb(0 0 0 / 49%), #074e2454);
+}

@@ -10,10 +10,23 @@ import {
 
 
 } from "@remix-run/react";
-import type { MetaFunction, LinksFunction  } from "@remix-run/node";
+import type { MetaFunction, LinksFunction, LoaderFunction  } from "@remix-run/node";
 import tailwindStyles from '~/tailwind.css'
 import baseStyles from '~/styles/base.css'
 import { FormProvider } from "./components/context";
+import { dark, neobrutalism, shadesOfPurple } from '@clerk/themes';
+import { ClerkApp } from "@clerk/remix";
+import { rootAuthLoader } from "@clerk/remix/ssr.server";
+export const loader: LoaderFunction = args => {
+  return rootAuthLoader(args, ({ request }) => {
+    const { sessionId, userId, getToken } = request.auth;
+console.log("sessionId", sessionId);
+console.log("userId", userId);
+console.log("getToken", getToken);
+console.log("request", request);
+    return { yourData: 'here' };
+  });
+};
 export const links: LinksFunction = () => {
   return [
     { rel: 'stylesheet', href: tailwindStyles },
@@ -46,7 +59,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+ function App() {
 
   
   return (
@@ -71,3 +84,9 @@ export default function App() {
     </html>
   );
 }
+
+export default ClerkApp(App, {
+  appearance: {
+    baseTheme: [dark]
+  },
+});

@@ -7,7 +7,8 @@ import rightIcon from './../assets/icons/arr-right.png'
 import SplashImg from './../assets/images/Splash.png'
 import { slideData } from './data/introSlide';
 import { Link } from '@remix-run/react';
-const Intro = (props: any) => {
+import { SignedIn, SignedOut } from '@clerk/remix';
+const Intro = ({onDismiss}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNextSlide = () => {
@@ -65,13 +66,15 @@ const Intro = (props: any) => {
             </div>
          
             </div>
-{slideData[currentIndex].img? (<img alt="" src={slideData[currentIndex].img} className='w-full h-full'/>)  : null}
+{slideData[currentIndex].img? (<img alt="" src={slideData[currentIndex].img} className='w-full '/>)  : null}
         </div>
         <div 
         className='items-stretch gap-5 bg-[#002C12] px-5  py-10 w-full  relative z-20 flex flex-col 2xs:py-2'
         >
         {currentIndex === 3 ? (
-          <Link to='/create-account' className='w-full'>
+          <>
+          <SignedIn>
+          <Link to='/profile'  onClick={onDismiss} className='w-full'>
        
        
     <div
@@ -84,7 +87,26 @@ const Intro = (props: any) => {
             <img alt="" src={rightIcon}/>
     </div>
 
-  </Link>) : (  <div onClick={handleNextSlide}>
+  </Link>
+  </SignedIn>
+  <SignedOut>
+  <Link to='/create-account' className='w-full'>
+       
+       
+       <div
+       className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-5 gap-2 flex-row flex  2xs:py-3 '
+       >
+       <h1 className='text-lg  text-[#fff]'>
+   
+     Let{`'`}s start
+               </h1>
+               <img alt="" src={rightIcon}/>
+       </div>
+   
+     </Link>
+  </SignedOut>
+  </>
+  ) : (  <div onClick={handleNextSlide}>
     <div className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-5 gap-2 flex-row flex 2xs:py-3'>
     <h1 className='text-lg  text-[#fff]'>
 
