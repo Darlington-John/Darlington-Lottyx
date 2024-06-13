@@ -89,5 +89,4 @@ export default ClerkApp(App, {
   appearance: {
     baseTheme: [dark]
   },
-  secretKey: process.env.CLERK_SECRET_KEY
 });
