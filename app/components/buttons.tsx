@@ -1,6 +1,6 @@
 
 const Button = (props: any) => {
-    return (<div className={`flex items-center justify-between    rounded py-1 px-2 gap-2` }  onClick={props.onClick} style={{backgroundColor: `${props.bg}`}}>
+    return (<div className={`flex items-center justify-between    rounded py-1 px-2 gap-2 lala` }  onClick={props.onClick} style={{backgroundColor: `${props.bg}`}}>
 
 {props.label && (
     <div className="flex gap-1  text-white  font-semibold">
