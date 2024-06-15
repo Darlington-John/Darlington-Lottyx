@@ -4,7 +4,7 @@ import Loader from "./../components/loader";
 import Intro from '~/components/intro';
 import useForm from '~/components/hooks/useForm';
 import { Navigate } from 'react-router';
-
+import { SignedIn, SignedOut } from '@clerk/remix';
 import infinityImg from "./../assets/images/infinity.gif"
 import splashDarkImg from "./../assets/images/splashDark.png"
 const Index = () => {
@@ -37,7 +37,7 @@ useEffect(() => {
      {showIntro ? (
         <Intro onDismiss={handleDismissIntro} />
       ) : (<>
-      
+        <SignedIn>
         {showDiscoverLoader ? (
   <div className="h-screen  overflow-auto">
   <img
@@ -54,8 +54,8 @@ className="w-full h-full fixed  z-10 top-0" alt=""
 ) : (
   <Navigate to="/discover"/>
 )}
-
-
+      </SignedIn>
+        <SignedOut><Navigate to="/create-account"/></SignedOut>
         </>
       )}
      </>
