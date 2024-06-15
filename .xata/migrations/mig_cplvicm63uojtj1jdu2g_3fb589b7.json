@@ -1,0 +1,19 @@
+{
+  "id": "mig_cplvicm63uojtj1jdu2g",
+  "parentID": "mig_cplvbuehon9ui32hiubg",
+  "checksum": "1:3fb589b7a56cd0cef8656a83c86655e7f5251cd36aa31f61ead6f36d6fdf3e3e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "user",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "resolutions"
+      }
+    }
+  ]
+}

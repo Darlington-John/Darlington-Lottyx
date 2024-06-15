@@ -67,7 +67,9 @@ const FormProvider = ({ children }) => {
     setShowIntro(false);
   };
   return (
-    <FormContext.Provider value={{ formState, updateFormState, clearFormState, showIntro, setShowIntro, handleDismissIntro }}>
+    <FormContext.Provider value={{ 
+      formState, updateFormState, clearFormState,
+       showIntro, setShowIntro, handleDismissIntro }}>
       {/* <button className='p-4 bg-[#fff] fixed top-0 z-20' onClick={clearFormState}>
         Clear
       </button> */}

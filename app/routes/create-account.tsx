@@ -11,7 +11,7 @@ import googleImg from "./../assets/icons/google.png"
 import { useCallback, useState, useRef } from 'react';
 import useForm from "~/components/hooks/useForm"
 import { Link, useNavigate } from "@remix-run/react"
-import { UserButton } from "@clerk/remix";
+
 
 
 const CreateAcct = () => {
@@ -267,7 +267,6 @@ className="w-5  h-5"
 <div  className="px-6 gap-4 items-center flex flex-col">
 <h1 className="text-white text-xs">- OR CREATE ACCOUNT WITH -</h1>
 
-<UserButton afterSignOutUrl="/"/>
 <Link to="/sign-in" className="w-full">
 <div className="w-full bg-[#C0F8D6] p-4 items-center justify-center gap-2 flex-row rounded-md flex">
       <img

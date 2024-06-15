@@ -1,0 +1,11 @@
+{
+  "id": "mig_cplv2lu63uojtj1jdtv0",
+  "checksum": "1:13579c8bb5b2ec125fa1adcc8a74557f9672dafd26932def5bde922682f50806",
+  "operations": [
+    {
+      "addTable": {
+        "table": "resolutions"
+      }
+    }
+  ]
+}

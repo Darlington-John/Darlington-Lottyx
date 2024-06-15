@@ -828,6 +828,11 @@
   dependencies:
     "@types/estree" "*"
 
+"@types/bcryptjs@^2.4.6":
+  version "2.4.6"
+  resolved "https://registry.npmjs.org/@types/bcryptjs/-/bcryptjs-2.4.6.tgz"
+  integrity sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==
+
 "@types/cookie@^0.6.0":
   version "0.6.0"
   resolved "https://registry.npmjs.org/@types/cookie/-/cookie-0.6.0.tgz"
@@ -1138,6 +1143,11 @@
   version "1.0.0"
   resolved "https://registry.npmjs.org/@web3-storage/multipart-parser/-/multipart-parser-1.0.0.tgz"
   integrity sha512-BEO6al7BYqcnfX15W2cnGR+Q566ACXAT9UQykORCWW80lmkpWsnEob6zJS1ZVBKsSJC8+7vJkHwlp+lXG1UCdw==
+
+"@xata.io/client@^0.29.5":
+  version "0.29.5"
+  resolved "https://registry.npmjs.org/@xata.io/client/-/client-0.29.5.tgz"
+  integrity sha512-b55dmPVNVFOE5nj2F2G6t9l/d5yYBhIu5X5w3rznhhsriGHkrzn93tqJexIZPS77E7f/yDXcFz06KbvR3bHK5w==
 
 "@zxing/text-encoding@0.9.0":
   version "0.9.0"
@@ -1513,6 +1523,11 @@ bcrypt@^5.1.1:
   dependencies:
     "@mapbox/node-pre-gyp" "^1.0.11"
     node-addon-api "^5.0.0"
+
+bcryptjs@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.npmjs.org/bcryptjs/-/bcryptjs-2.4.3.tgz"
+  integrity sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==
 
 big-integer@^1.6.16:
   version "1.6.52"
@@ -6158,15 +6173,15 @@ remark-rehype@^10.0.0:
     mdast-util-to-hast "^12.1.0"
     unified "^10.0.0"
 
-remix-auth-form@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/remix-auth-form/-/remix-auth-form-1.4.0.tgz"
-  integrity sha512-PirsVtv2AbJ7Lg+OjE+rjlW9AnkNYmqfmNIqTg0Mh1wur22ls5hxf2icVXVCRRhpcpV+FyoDxh03LtIyRj646A==
+remix-auth-form@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/remix-auth-form/-/remix-auth-form-1.5.0.tgz"
+  integrity sha512-xWM7T41vi4ZsIxL3f8gz/D6g2mxrnYF7LnG+rG3VqwHh6l13xCoKLraxzWRdbKMVKKQCMISKZRXAeJh9/PQwBA==
 
-remix-auth@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.npmjs.org/remix-auth/-/remix-auth-3.6.0.tgz"
-  integrity sha512-mxlzLYi+/GKQSaXIqIw15dxAT1wm+93REAeDIft2unrKDYnjaGhhpapyPhdbALln86wt9lNAk21znfRss3fG7Q==
+remix-auth@^3.6.0, remix-auth@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.npmjs.org/remix-auth/-/remix-auth-3.7.0.tgz"
+  integrity sha512-2QVjp2nJVaYxuFBecMQwzixCO7CLSssttLBU5eVlNcNlVeNMmY1g7OkmZ1Ogw9sBcoMXZ18J7xXSK0AISVFcfQ==
   dependencies:
     uuid "^8.3.2"
 
@@ -7170,7 +7185,7 @@ typed-array-length@^1.0.4:
     is-typed-array "^1.1.13"
     possible-typed-array-names "^1.0.0"
 
-typescript@^5.1.0, typescript@^5.1.6, typescript@>=4.2.0:
+typescript@^5.1.0, typescript@^5.1.6, typescript@>=4.2.0, typescript@>=4.5:
   version "5.3.3"
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.3.3.tgz"
   integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==

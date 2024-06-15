@@ -1,0 +1,18 @@
+{
+  "id": "mig_cplv9puhon9ui32hiu80",
+  "parentID": "mig_cplv9cmhon9ui32hiu70",
+  "checksum": "1:3c47ae33becb8128399f3436ca31b8ebf9c18b91dc62b46ee15bf105af39a02e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "isCompleted",
+          "type": "bool",
+          "notNull": true,
+          "defaultValue": "false"
+        },
+        "table": "resolutions"
+      }
+    }
+  ]
+}

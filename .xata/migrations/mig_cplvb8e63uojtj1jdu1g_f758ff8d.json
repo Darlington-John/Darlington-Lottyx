@@ -1,0 +1,18 @@
+{
+  "id": "mig_cplvb8e63uojtj1jdu1g",
+  "parentID": "mig_cplvai53l6trsu4qfg40",
+  "checksum": "1:f758ff8db26080cc89cb15e58ccb198dedbb179d702af698b49652c31b9fe3e4",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "email",
+          "type": "email",
+          "notNull": true,
+          "defaultValue": "onuohadarlington38@gmail.com"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

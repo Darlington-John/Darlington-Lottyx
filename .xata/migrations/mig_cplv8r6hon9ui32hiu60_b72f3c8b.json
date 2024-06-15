@@ -1,0 +1,18 @@
+{
+  "id": "mig_cplv8r6hon9ui32hiu60",
+  "parentID": "mig_cplv2lu63uojtj1jdtv0",
+  "checksum": "1:b72f3c8b149f70664f97601d1500b4e74011afa0b5dbebf937d4c7d990dc0b37",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "resolution",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "My resolution"
+        },
+        "table": "resolutions"
+      }
+    }
+  ]
+}
