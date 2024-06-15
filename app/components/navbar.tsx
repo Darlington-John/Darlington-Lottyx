@@ -1,22 +1,16 @@
-import { UserButton, useUser } from "@clerk/remix";
+
 import Button from "./buttons";
 import coinImg from './../assets/icons/coin.png'
 import BellImg from './../assets/icons/Bell.png'
 import plusImg from './../assets/icons/plus.png'
 import useForm from "./hooks/useForm";
 const Navbar = () => {
-    const { formState } = useForm();
-    const { isLoaded, isSignedIn, user } = useUser();
 
-    // if (!isLoaded || !isSignedIn) {
-    //   return null;
-    // }
 
     return (  <div className="flex  items-center justify-between sticky w-full top-0 z-40 text-white text-sm px-5  py-3 ">
         <div className="flex items-center gap-2">
-<UserButton/>
 <h1 >
-    Hello, {isSignedIn ? `${user.firstName}` : `${formState.firstName}`} 
+    Hello jjjj
 </h1>
 </div>
 <div className="flex gap-2">
