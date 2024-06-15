@@ -10,7 +10,7 @@ const Navbar = () => {
     return (  <div className="flex  items-center justify-between sticky w-full top-0 z-40 text-white text-sm px-5  py-3 ">
         <div className="flex items-center gap-2">
 <h1 >
-    Hello
+    Hello jjjj
 </h1>
 </div>
 <div className="flex gap-2">
