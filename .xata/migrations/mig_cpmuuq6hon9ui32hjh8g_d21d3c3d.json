@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpmuuq6hon9ui32hjh8g",
+  "parentID": "mig_cpmuulmhon9ui32hjh7g",
+  "checksum": "1:d21d3c3d08dd2077d3a588ea52cac70cb75790745702cf564386bc7994796226",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "surname",
+        "table": "resolutions"
+      }
+    }
+  ]
+}

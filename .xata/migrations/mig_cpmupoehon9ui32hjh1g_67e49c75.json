@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpmupoehon9ui32hjh1g",
+  "parentID": "mig_cpmupjehon9ui32hjh0g",
+  "checksum": "1:67e49c75bd72c2556e23a51eb6efc751fedd675f81fd6160c2495a1a5e543d89",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "phone",
+        "table": "resolutions"
+      }
+    }
+  ]
+}

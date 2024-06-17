@@ -1,0 +1,18 @@
+{
+  "id": "mig_cpmuv8mhon9ui32hjh9g",
+  "parentID": "mig_cpmuv2l3l6trsu4qfrfg",
+  "checksum": "1:162500f1b372bbf378d218e1d882ca79023362895567e3ddfa75eb4cd4714b66",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "surname",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "Doe"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

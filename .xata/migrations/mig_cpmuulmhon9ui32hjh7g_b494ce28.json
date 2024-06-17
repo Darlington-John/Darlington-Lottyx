@@ -1,0 +1,18 @@
+{
+  "id": "mig_cpmuulmhon9ui32hjh7g",
+  "parentID": "mig_cpmuufehon9ui32hjh6g",
+  "checksum": "1:b494ce28a1f8180dc53463539d5217b2894d1f509369fa62ed15c6dc6cc5af14",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "surname",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "Doe"
+        },
+        "table": "resolutions"
+      }
+    }
+  ]
+}

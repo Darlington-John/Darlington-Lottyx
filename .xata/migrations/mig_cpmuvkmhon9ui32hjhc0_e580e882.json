@@ -1,0 +1,18 @@
+{
+  "id": "mig_cpmuvkmhon9ui32hjhc0",
+  "parentID": "mig_cpmuv8mhon9ui32hjh9g",
+  "checksum": "1:e580e882d5df582a756246fd841a0367c7b08cc18b8b52f331a1bcfb41a5f778",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "phone",
+          "type": "int",
+          "notNull": true,
+          "defaultValue": "0000"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}
