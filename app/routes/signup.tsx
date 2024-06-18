@@ -12,19 +12,18 @@ import warningIcon from "./../assets/icons/warning.svg"
 import googleImg from "./../assets/icons/google.png"
 import {  useState} from 'react';
 import useForm from "~/components/hooks/useForm"
-import { Link,  Form } from "@remix-run/react"
+import { Link,  Form, json, useLoaderData } from "@remix-run/react"
 const loader: LoaderFunction = async ({ request }) => {
   const user = await authenticator.isAuthenticated(request, {
-    successRedirect: '/resolutions'
+    successRedirect: '/discover'
   });
 
   if (!user) {
-    // Return any data necessary for rendering the login page, or null if no data is needed
-    return null;
+    // Optionally return null or any data necessary for the login page
+    return json({ user: null });
   }
 
-  // This point is reached if the user is authenticated and has been redirected
-  // The function should never actually reach here if the redirect happens correctly
+  return json({ user });
 };
 const action:ActionFunction = async ({request}) => {
   const form = await request.formData();
@@ -38,13 +37,15 @@ const action:ActionFunction = async ({request}) => {
   const xata = getXataClient();
   const user = await xata.db.users.create({email, password: hashedPassword, phone, name, surname})
   return await authenticator.authenticate("form", request, {
-      successRedirect: "/resolutions",
+      successRedirect: "/discover",
       failureRedirect: "/login",
       context: {FormData: form} 
   })
 }
 
 const Signup = () => {
+  const { user } = useLoaderData();
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
  
   const [errorEmailMessage, setErrorEmailMessage] = useState<string | null>(null);
@@ -159,6 +160,7 @@ className="gap-3"
 <h1 
 className="text-lg  text-[#fff]  text-[28px] font-semibold text-center">
 Create an account
+
 </h1>
 <div 
 className="flex-row gap-2 flex- row flex-wrap items-center justify-center flex">
@@ -166,10 +168,10 @@ className="flex-row gap-2 flex- row flex-wrap items-center justify-center flex">
 className="text-lg  text-[#fff]  text-lg  text-center ">
 Already have an account?
 </h1>
-<Link to="/signup">
+<Link to="/login">
 <h1 
 className="text-lg  text-green     ">
-Sign up
+Log in
 </h1>
 </Link>
 </div>

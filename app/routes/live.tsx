@@ -6,6 +6,7 @@ import Resolution from "~/components/resolutions";
 import NewResolution from "~/components/new-resolution";
 import { getXataClient } from "utils/xata";
 import { authenticator } from "utils/auth.server";
+import Navbar from "~/components/navbar";
 
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -68,11 +69,12 @@ export const action: ActionFunction = async ({ request }) => {
 }
 
 
-const ResolutionPage = () => {
+const LivePage = () => {
   const { resolutions, user } = useLoaderData();
 
   return (
     <div className="flex items-center justify-center bg-lightOrange text-4xl h-screen w-full text-wtaorange">
+        <Navbar user={user}/>
       <Link to="/resolutions">
         <h1>{user.phone}</h1>
       </Link>
@@ -84,20 +86,9 @@ const ResolutionPage = () => {
           Logout
         </button>
       </Form>
-      <div className="grid grid-flow-row gap-y-10">
-        <NewResolution />
-        <div className="grid grid-cols-[repeat(4,auto)] justify-start items-center gap-x-8 gap-y-4">
-          {resolutions.length === 0 ? (
-            <p className="text-darkOrange text-2xl">{`You made no resolutions!`}</p>
-          ) : (
-            resolutions.map((resolution) => {
-              return <Resolution key={resolution.id} resolution={resolution} />
-            })
-          )}
-        </div>
-      </div>
+
     </div>
   );
 }
 
-export default ResolutionPage;
+export default LivePage;

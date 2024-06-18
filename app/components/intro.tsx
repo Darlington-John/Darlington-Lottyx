@@ -7,8 +7,8 @@ import rightIcon from './../assets/icons/arr-right.png'
 import SplashImg from './../assets/images/Splash.png'
 import { slideData } from './data/introSlide';
 import { Link } from '@remix-run/react';
-import { SignedIn, SignedOut } from '@clerk/remix';
-const Intro = ({onDismiss}) => {
+
+const Intro = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNextSlide = () => {
@@ -73,8 +73,8 @@ const Intro = ({onDismiss}) => {
         >
         {currentIndex === 3 ? (
           <>
-          <SignedIn>
-          <Link to='/profile'  onClick={onDismiss} className='w-full'>
+{/*        
+          <Link to='/profile'  className='w-full'>
        
        
     <div
@@ -87,10 +87,10 @@ const Intro = ({onDismiss}) => {
             <img alt="" src={rightIcon}/>
     </div>
 
-  </Link>
-  </SignedIn>
-  <SignedOut>
-  <Link to='/create-account' className='w-full'>
+  </Link> */}
+
+
+  <Link to='/signup' className='w-full'>
        
        
        <div
@@ -104,7 +104,6 @@ const Intro = ({onDismiss}) => {
        </div>
    
      </Link>
-  </SignedOut>
   </>
   ) : (  <div onClick={handleNextSlide}>
     <div className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-5 gap-2 flex-row flex 2xs:py-3'>

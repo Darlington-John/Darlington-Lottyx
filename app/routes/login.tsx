@@ -9,7 +9,7 @@ import dangerIcon from "./../assets/icons/danger.svg"
 import { useState } from 'react';
  const loader: LoaderFunction = async ({ request }) => {
     const user = await authenticator.isAuthenticated(request, {
-      successRedirect: '/resolutions'
+      successRedirect: '/acct-setup'
     });
   
     if (!user) {
@@ -22,7 +22,7 @@ import { useState } from 'react';
   };
 const action:ActionFunction = async ({request}) => {
    await authenticator.authenticate("form", request, {
-    successRedirect: '/resolutions',
+    successRedirect: '/acct-setup',
     failureRedirect: '/login'
    })
 }
