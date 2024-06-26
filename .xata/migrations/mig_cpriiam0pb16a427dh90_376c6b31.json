@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpriiam0pb16a427dh90",
+  "parentID": "mig_cprg5jf7lilural97ml0",
+  "checksum": "1:376c6b316f0d612f824a43d641840943f8f5ed6231a425ec6a54174a97549029",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "price",
+        "table": "bids"
+      }
+    }
+  ]
+}

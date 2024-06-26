@@ -1,0 +1,18 @@
+{
+  "id": "mig_cpqtlp99lhsg5enuim30",
+  "parentID": "mig_cpqtlfe0pb16a427de1g",
+  "checksum": "1:336779d03e7149702261c5c3bccfcf5158a6f216b74da669af4bb9ba2c6cabcd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "price",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "amount"
+        },
+        "table": "bids"
+      }
+    }
+  ]
+}

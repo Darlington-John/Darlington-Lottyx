@@ -1,0 +1,16 @@
+{
+  "id": "mig_cps8vrh9lhsg5enuj2k0",
+  "parentID": "mig_cps8u8u0pb16a427dohg",
+  "checksum": "1:12f76f935fea3526a5c91dd19f886b71738fdef5d1dd99f4a5eeb1495801b82a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "editBidCode",
+          "type": "int"
+        },
+        "table": "bids"
+      }
+    }
+  ]
+}

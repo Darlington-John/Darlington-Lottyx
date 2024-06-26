@@ -1,0 +1,18 @@
+{
+  "id": "mig_cprfhnv7lilural97me0",
+  "parentID": "mig_cprfhc19lhsg5enuiu60",
+  "checksum": "1:e410021cb73576b3829a01d62d26268f3e84503565accdb03366a8589db17fd2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "product",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "~/assets/images/camera.png"
+        },
+        "table": "bids"
+      }
+    }
+  ]
+}

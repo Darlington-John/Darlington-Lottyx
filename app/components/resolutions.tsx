@@ -12,9 +12,6 @@ submit(event.currentTarget)
     }
     return (
         <div>
-            {/* <p>  {resolution.isCompleted.toString()}</p>
-         <p>{resolution.resolution}</p>
-         <p>{resolution.year}</p> */}
          <Link className="font-semibold text-xl"  to={`/resolutions?year=${resolution.year}`}>
          {resolution.year}
          </Link>

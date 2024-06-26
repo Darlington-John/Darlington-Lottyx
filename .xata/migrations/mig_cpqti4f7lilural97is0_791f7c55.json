@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpqti4f7lilural97is0",
+  "parentID": "mig_cpqth2u0pb16a427de0g",
+  "checksum": "1:791f7c5581bd0abed13058f7caaa1e1ba6998cc77d6ff901cd90dbf855964b9f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "product",
+          "type": "file[]"
+        },
+        "table": "bids"
+      }
+    }
+  ]
+}

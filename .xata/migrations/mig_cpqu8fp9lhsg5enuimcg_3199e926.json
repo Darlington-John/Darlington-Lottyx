@@ -1,0 +1,19 @@
+{
+  "id": "mig_cpqu8fp9lhsg5enuimcg",
+  "parentID": "mig_cpqtm477lilural97it0",
+  "checksum": "1:3199e92682c65e6b35751447f8ca4a29bde28933d6e030c98de0be029125b4a9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "user",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "bids"
+      }
+    }
+  ]
+}

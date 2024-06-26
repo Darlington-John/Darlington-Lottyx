@@ -40,7 +40,27 @@ const tables = [
       { name: "surname", type: "string", notNull: true, defaultValue: "Doe" },
       { name: "phone", type: "text", notNull: true, defaultValue: "0" },
     ],
-    revLinks: [{ column: "user", table: "resolutions" }],
+    revLinks: [
+      { column: "user", table: "resolutions" },
+      { column: "user", table: "bids" },
+    ],
+  },
+  {
+    name: "bids",
+    columns: [
+      {
+        name: "productName",
+        type: "string",
+        notNull: true,
+        defaultValue: "product",
+      },
+      { name: "url", type: "text", notNull: true, defaultValue: "url" },
+      { name: "user", type: "link", link: { table: "users" } },
+      { name: "product", type: "text", notNull: true, defaultValue: "camera" },
+      { name: "price", type: "int", notNull: true, defaultValue: "000" },
+      { name: "bidCode", type: "int" },
+      { name: "editBidCode", type: "int" },
+    ],
   },
 ] as const;
 
@@ -53,9 +73,13 @@ export type ResolutionsRecord = Resolutions & XataRecord;
 export type Users = InferredTypes["users"];
 export type UsersRecord = Users & XataRecord;
 
+export type Bids = InferredTypes["bids"];
+export type BidsRecord = Bids & XataRecord;
+
 export type DatabaseSchema = {
   resolutions: ResolutionsRecord;
   users: UsersRecord;
+  bids: BidsRecord;
 };
 
 const DatabaseClient = buildClient();
