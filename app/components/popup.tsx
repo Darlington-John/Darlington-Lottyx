@@ -4,7 +4,7 @@ import useForm from "./hooks/useForm";
 import informationImg from '~/assets/images/information.png'
 import LottoNumberGenerator from "./lotto-spinner";
 const Popup = (props : any) => {
-    const {isVisible, popupRef, togglePopup, showInfo, isBiddingVisible,popupBidRef,toggleBid,bidding} = useForm();
+    const {isVisible, popupRef, showInfo, isBiddingVisible,popupBidRef, bidding} = useForm();
     return (<>
 {props.slide && (
     <>

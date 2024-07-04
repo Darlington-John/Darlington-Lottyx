@@ -1,3 +1,4 @@
+import { useSubmit } from '@remix-run/react';
 import { createContext, useEffect, useRef, useState} from 'react';
 
 const FormContext = createContext();
@@ -15,6 +16,35 @@ const FormProvider = ({ children }) => {
   const[isBiddingVisible, setIsBiddingVisible] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isUnderstood, setIsUnderstood] = useState(false);
+  const [activeDiv, setActiveDiv] = useState(null);
+  const [selectedNumbers, setSelectedNumbers] = useState({ 1: "", 2: "", 3: "", 4: "" });
+  const [error, setError] = useState("")
+  const handleDivClick = (divId) => {
+    setActiveDiv(divId);
+  };
+
+  const handleNumberClick = (number) => {
+    if (activeDiv !== null) {
+      setSelectedNumbers((prev) => ({ ...prev, [activeDiv]: number }));
+    }
+  };
+
+  const handleChange = (e, pot) => {
+    const value = e.target.value;
+    setSelectedNumbers((prev) => ({ ...prev, [pot]: value }));
+  };
+  const getPotText = () => {
+    if (!activeDiv) {
+        return 'Choose any pot above';
+    } else {
+        return `Select a number below for POT ${activeDiv}`;
+    }
+};
+const resetToDefault = () => {
+  setActiveDiv(null);
+  setSelectedNumbers({ 1: "", 2: "", 3: "", 4: "" });
+};
+
   const popupRef = useRef(null);
   const popupBidRef = useRef(null);
   const togglePopup = () => {
@@ -111,9 +141,81 @@ const FormProvider = ({ children }) => {
     setMinorNumbers('999999');
     setPlusNumbers('111111');
   };
+
+  const submit = useSubmit();
+  const handlePotsSubmit = () => {
+
+    if (!selectedNumbers[1] || !selectedNumbers[2] || !selectedNumbers[3] || !selectedNumbers[4]) {
+      setError("You didn’t select a number in some pots. Select a number in all pots to submit this ticket.");
+      return;
+    }
+    const formId = "potForm"; // Specify the ID of the form you want to submit
+    const form = document.getElementById(formId);
+    const actionInput = form.querySelector('input[name="action"]');
+    if (form && actionInput) {
+      actionInput.value = "addPot";
+      submit(form);
+      setError(""); // Clear error after successful submission
+      togglePayPopup();
+      togglePaySucessfulPopup();
+      setTimeout(() => {
+        setIsJackpotSucessfulVisible(true);
+        setTimeout(() => setJackpotSucessful(true), 500);
+      }, 3000);
+    }
+  };
+  const [pay, setPay] = useState(false);
+  const [isPayVisible, setIsPayVisible] = useState(false);
+  const payRef = useRef(null);
+
+  const togglePayPopup = () => {
+    if (!pay) {
+      setPay(true);
+      setIsPayVisible(true);
+    } else {
+      setIsPayVisible(false);
+      setTimeout(() => setPay(false), 500);
+    }
+  };
+  const [paySucessful, setPaySucessful] = useState(false);
+  const [isPaySucessfulVisible, setIsPaySucessfulVisible] = useState(false);
+  const [jackpotSucessful, setJackpotSucessful] = useState(false);
+  const [isJackpotSucessfulVisible, setIsJackpotSucessfulVisible] = useState(false);
+  const paySucessfulRef = useRef(null);
+  const defaultSelectedNumbers = { 1: "", 2: "", 3: "", 4: "" };
+  const PlayAgain =()=> {
+    setTimeout(() => setJackpotSucessful(false), 1000);
+setSelectedNumbers(defaultSelectedNumbers);
+  }
+  const toggleJackpotSucessfulPopup = () => {
+    if (!jackpotSucessful) {
+      setJackpotSucessful(true);
+      setIsJackpotSucessfulVisible(true);
+      
+    } else {
+      setIsJackpotSucessfulVisible(false);
+      setTimeout(() => setJackpotSucessful(false), 500);
+    }
+  };
+  // setTimeout(() => setIsJackpotSucessfulVisible(true), 500);
+  // setTimeout(() => setJackpotSucessful(true), 500);
+  const togglePaySucessfulPopup = () => {
+    if (!paySucessful) {
+      setPaySucessful(true);
+      setIsPaySucessfulVisible(true);
+      setTimeout(() => {
+        setIsPaySucessfulVisible(false);
+        setTimeout(() => setPaySucessful(false), 500);
+      }, 3000);
+    } else {
+      setIsPaySucessfulVisible(false);
+      setTimeout(() => setPaySucessful(false), 500);
+    }
+  };
   return (
     <FormContext.Provider value={{ 
-       clearFormState, isVisible, popupRef, togglePopup, showInfo, setShowInfo, isUnderstood, isBiddingVisible,popupBidRef, toggleBid, bidding,setBidding, mainNumbers, minorNumbers, plusNumbers, isSpinning, getRandomNumber , generateLottoNumbers, resetNumbers
+       clearFormState, isVisible, popupRef, togglePopup, showInfo, setShowInfo, isUnderstood, isBiddingVisible,popupBidRef, toggleBid, bidding,setBidding, mainNumbers, minorNumbers, plusNumbers, isSpinning, getRandomNumber , generateLottoNumbers, resetNumbers, handlePotsSubmit, selectedNumbers, setSelectedNumbers, handleDivClick, handleNumberClick , handleChange, getPotText, activeDiv, setActiveDiv, resetToDefault, pay, setPay, isPayVisible, setIsPayVisible, payRef, togglePayPopup, error, paySucessful, setPaySucessful, isPaySucessfulVisible, setIsPaySucessfulVisible, paySucessfulRef, togglePaySucessfulPopup, toggleJackpotSucessfulPopup, jackpotSucessful, setJackpotSucessful,
+       isJackpotSucessfulVisible, setIsJackpotSucessfulVisible, PlayAgain
 }}>
       {/* <button className='p-4 bg-[#fff] fixed top-0 z-20' onClick={clearFormState}>
 

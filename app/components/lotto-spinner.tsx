@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+
 import spinIcon from '~/assets/icons/repeat.png'
 import editIcon from "~/assets/icons/edit.png"
 import useForm from './hooks/useForm';
 const LottoNumberGenerator = (props: any) => {
-const {mainNumbers, minorNumbers, plusNumbers, isSpinning, getRandomNumber , generateLottoNumbers} = useForm();
+const {mainNumbers, minorNumbers, plusNumbers, isSpinning,  generateLottoNumbers} = useForm();
   return (
 
     <div className="flex flex-col items-center w-full gap-3">

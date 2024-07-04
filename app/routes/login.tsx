@@ -13,12 +13,10 @@ import { useState } from 'react';
     });
   
     if (!user) {
-      // Return any data necessary for rendering the login page, or null if no data is needed
+
       return null;
     }
-  
-    // This point is reached if the user is authenticated and has been redirected
-    // The function should never actually reach here if the redirect happens correctly
+
   };
 const action:ActionFunction = async ({request}) => {
    await authenticator.authenticate("form", request, {
@@ -74,7 +72,7 @@ const Login = () => {
     const isValid = validateForm(form);
 
     if (isValid) {
-      // Change the button type to submit if the form is valid
+
       event.currentTarget.setAttribute('type', 'submit');
       formElement.submit();
     }

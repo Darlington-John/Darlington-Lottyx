@@ -12,7 +12,7 @@ import warningIcon from "./../assets/icons/warning.svg"
 import googleImg from "./../assets/icons/google.png"
 import {  useState} from 'react';
 import useForm from "~/components/hooks/useForm"
-import { Link,  Form, json, useLoaderData } from "@remix-run/react"
+import { Link,  Form, json, useLoaderData, redirect } from "@remix-run/react"
 const loader: LoaderFunction = async ({ request }) => {
   const user = await authenticator.isAuthenticated(request, {
     successRedirect: '/discover'
@@ -25,23 +25,38 @@ const loader: LoaderFunction = async ({ request }) => {
 
   return json({ user });
 };
-const action:ActionFunction = async ({request}) => {
-  const form = await request.formData();
-  const email = form.get('email') as string;
-  const password = form.get('password') as string;
-  const phone = form.get('phone') as string;
-  const name = form.get('name') as string;
-  const surname = form.get('surname') as string;
-  const  salt = await bcrypt.genSalt(10);
-  const hashedPassword = await  bcrypt.hash(password, salt);
-  const xata = getXataClient();
-  const user = await xata.db.users.create({email, password: hashedPassword, phone, name, surname})
-  return await authenticator.authenticate("form", request, {
-      successRedirect: "/discover",
-      failureRedirect: "/login",
-      context: {FormData: form} 
-  })
-}
+const action: ActionFunction = async ({ request }) => {
+  try {
+    // Read form data once
+    const form = await request.formData();
+    const email = form.get('email') as string;
+    const password = form.get('password') as string;
+    const phone = form.get('phone') as string;
+    const name = form.get('name') as string;
+    const surname = form.get('surname') as string;
+
+    const xata = getXataClient();
+    
+    // Check if user already exists
+    const existingUser = await xata.db.users.filter({ email }).getFirst();
+    if (existingUser) {
+      return redirect("/signup?error=user-exists");
+    }
+
+    // Hash password and create user
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    await xata.db.users.create({ email, password: hashedPassword, phone, name, surname });
+
+    // Redirect to login for authentication
+    return redirect("/login");
+
+  } catch (error) {
+    console.error('Error in action function:', error);
+    throw error;
+  }
+};
+
 
 const Signup = () => {
   const { user } = useLoaderData();
@@ -284,11 +299,13 @@ className="w-5  h-5"
         </div>
         {errorPwdMessage && <h1 className="text-[12px] text-[#ff8d8d]">{errorPwdMessage}</h1>}
       </div>
+ 
       <button   type="button" 
         onClick={handleButtonClick}
         className="text-base text-[#fff] w-full  py-1 px-2  bg-[#18A551] items-center rounded-md flex justify-center text-white text-base py-2 text-center"  >
 Continue
         </button>
+
         <button type="submit" style={{ display: "none" }}>Submit</button>
    </Form>
 </div>

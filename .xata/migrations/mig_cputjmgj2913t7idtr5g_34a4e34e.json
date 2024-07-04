@@ -1,0 +1,16 @@
+{
+  "id": "mig_cputjmgj2913t7idtr5g",
+  "parentID": "mig_cputjh0j2913t7idtr4g",
+  "checksum": "1:34a4e34ecb787233356d1b71c5ca817709ccc92b1a43dba997b7f9ecca1262de",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Pot1",
+          "type": "int"
+        },
+        "table": "pots"
+      }
+    }
+  ]
+}

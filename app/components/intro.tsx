@@ -1,6 +1,5 @@
 
-import { useCallback, useState } from 'react';
-import womanImg from './../assets/images/woman.png'
+import { useState } from 'react';
 import LogoImg from './../assets/images/Logo.png'
 import rightIcon from './../assets/icons/arr-right.png'
 
@@ -27,9 +26,6 @@ const Intro = () => {
 
               <img
                src={SplashImg}
-              //  style={{ width: '100%', height: '100vh', resizeMode: 'cover', overflow: 'visible',  
-              //  position: 'absolute',
-              //  zIndex: 1}}
                className=' w-full h-screen absolute z-10 flex flex-col '
                alt=""
              />
@@ -69,32 +65,17 @@ const Intro = () => {
 {slideData[currentIndex].img? (<img alt="" src={slideData[currentIndex].img} className='w-full '/>)  : null}
         </div>
         <div 
-        className='items-stretch gap-5 bg-[#002C12] px-5  py-10 w-full  relative z-20 flex flex-col 2xs:py-2'
+        className={`items-stretch gap-5  px-5  py-10 w-full  relative z-20 flex flex-col 2xs:py-2 ${currentIndex === 3 ? ' ' : 'bg-[#002C12]'}`}
         >
         {currentIndex === 3 ? (
-          <>
-{/*        
-          <Link to='/profile'  className='w-full'>
-       
-       
-    <div
-    className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-5 gap-2 flex-row flex  2xs:py-3 '
-    >
-    <h1 className='text-lg  text-[#fff]'>
-
-  Let{`'`}s start
-            </h1>
-            <img alt="" src={rightIcon}/>
-    </div>
-
-  </Link> */}
+ 
 
 
   <Link to='/signup' className='w-full'>
        
        
        <div
-       className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-5 gap-2 flex-row flex  2xs:py-3 '
+       className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-3 gap-2 flex-row flex action  '
        >
        <h1 className='text-lg  text-[#fff]'>
    
@@ -104,9 +85,9 @@ const Intro = () => {
        </div>
    
      </Link>
-  </>
+
   ) : (  <div onClick={handleNextSlide}>
-    <div className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-5 gap-2 flex-row flex 2xs:py-3'>
+    <div className='rounded-lg bg-[#18A551] w-full items-center justify-center  py-3 gap-2 flex-row flex  action'>
     <h1 className='text-lg  text-[#fff]'>
 
 Continue

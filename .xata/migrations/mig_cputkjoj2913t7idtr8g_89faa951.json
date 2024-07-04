@@ -1,0 +1,19 @@
+{
+  "id": "mig_cputkjoj2913t7idtr8g",
+  "parentID": "mig_cputk30j2913t7idtr7g",
+  "checksum": "1:89faa9514bee7f396a11f572af4914e30e6296003b3b4d4e1e1e748f91bdb840",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "user",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "pots"
+      }
+    }
+  ]
+}

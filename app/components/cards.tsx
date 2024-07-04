@@ -3,6 +3,7 @@ import closeIcon from '~/assets/icons/close.png'
 import CountdownTimer from "./countdown";
 import coinImg from '~/assets/icons/coin.png'
 import { Link } from "@remix-run/react";
+import ticketImg from '~/assets/images/Ticket.png'
 const Cards = (props: any) => {
     return ( <> 
     {props.products && (
@@ -56,10 +57,28 @@ const Cards = (props: any) => {
         </div>
     )}
     {props.information  && (
-        <div className="flex gap-2 items-center w-full   rounded-lg text-sm  bg-[#00000040] p-3  text-start">
+        <div className="flex gap-2 items-start w-full   rounded-lg text-sm  bg-[#00000040] p-3  text-start">
 <img src={props.infoImg} alt=""/>
 <p>{props.info}</p>
         </div>
+    )}
+    {props.tickets && (
+        <Link to={props.link}>
+        <div className="flex justify-between py-3 px-4 items-start bg-[#171817] rounded-lg">
+<div className="flex gap-1 items-center">
+<img src={ticketImg} alt="" className="w-10 h-10"/>
+<div className="flex flex-col gap-0">
+<h1 className="text-sm ">
+    Ticket #{props.id}
+</h1>
+<h1 className="text-sm ">
+    {props.date}
+</h1>
+</div>
+</div>
+<Button label={true} labelImg={coinImg} labelText={props.pay} bg="#444A47" rounded="[4px]" pad=" 2px 4px"/>
+        </div>
+        </Link>
     )}
     </>);
 }

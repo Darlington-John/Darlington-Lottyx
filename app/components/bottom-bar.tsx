@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLoaderData, useLocation } from "@remix-run/react";
 import diceImg from "~/assets/icons/dice.png"
 import diceSleepImg from "~/assets/icons/diceSleep.png"
 import jackImg from "~/assets/icons/jack.png"
@@ -8,6 +8,10 @@ import walletSleepImg from "~/assets/icons/walletSleep.png"
 import profileImg from "~/assets/icons/profile.png"
 import profileSleepImg from "~/assets/icons/profileSleep.png"
 import moreImg from "~/assets/icons/moreSleep.png"
+import { authenticator } from 'utils/auth.server';
+import { getXataClient } from 'utils/xata';
+import { LoaderFunction,  json } from "@remix-run/node";
+
 
 const link = [
     {id: 1,
@@ -41,17 +45,20 @@ const link = [
         favIcon:  diceSleepImg,
     },
 ]
-const BottomBar = () => {
+const BottomBar = ({pots = []}) => {
     const location = useLocation();
 
-  // Function to check if the current URL matches the provided link
+  
 
     return ( <div className="flex items-center  py-1 w-full px-3 justify-between relative z-20   text-[9px] bg-[#0B0C0C]">
 
         {link.map((data, index) =>
-        (
-          <Link to={data.link} className={`${location.pathname.startsWith(data.link) ? 'text-white' : 'text-[#A7B1AB]'}`} key={index}>
-            <div className={`flex flex-col  items-center text-center  px-5`}>
+        
+{   
+  const link = data.link === '/jackpot' && pots.length > 0 ? '/jackpot/tickets' : data.link;
+  return   (
+        <Link to={link} className={`${location.pathname.startsWith(data.link) ? 'text-white' : 'text-[#A7B1AB]'}`} key={index}>
+          <div className={`flex flex-col  items-center text-center  px-5`}>
 
 <img src={location.pathname.startsWith(data.link) ? data.favIconActive : data.favIcon} alt=""/>
 
@@ -59,7 +66,7 @@ const BottomBar = () => {
 
 </div>
 </Link>
-        )
+      )}
         )}
 
     </div> );

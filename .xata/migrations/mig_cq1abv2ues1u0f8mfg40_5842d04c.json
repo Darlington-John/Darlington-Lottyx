@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq1abv2ues1u0f8mfg40",
+  "parentID": "mig_cputkjoj2913t7idtr8g",
+  "checksum": "1:5842d04c09cf75b3c76c20147cb6cb1a681342d9e28eda024e81d89a57842027",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "pay",
+          "type": "int"
+        },
+        "table": "pots"
+      }
+    }
+  ]
+}

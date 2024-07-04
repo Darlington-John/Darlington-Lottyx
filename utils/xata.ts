@@ -43,6 +43,7 @@ const tables = [
     revLinks: [
       { column: "user", table: "resolutions" },
       { column: "user", table: "bids" },
+      { column: "user", table: "pots" },
     ],
   },
   {
@@ -62,6 +63,17 @@ const tables = [
       { name: "editBidCode", type: "int" },
     ],
   },
+  {
+    name: "pots",
+    columns: [
+      { name: "Pot1", type: "int" },
+      { name: "Pot2", type: "int" },
+      { name: "Pot3", type: "int" },
+      { name: "Pot4", type: "int" },
+      { name: "user", type: "link", link: { table: "users" } },
+      { name: "pay", type: "int" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -76,10 +88,14 @@ export type UsersRecord = Users & XataRecord;
 export type Bids = InferredTypes["bids"];
 export type BidsRecord = Bids & XataRecord;
 
+export type Pots = InferredTypes["pots"];
+export type PotsRecord = Pots & XataRecord;
+
 export type DatabaseSchema = {
   resolutions: ResolutionsRecord;
   users: UsersRecord;
   bids: BidsRecord;
+  pots: PotsRecord;
 };
 
 const DatabaseClient = buildClient();

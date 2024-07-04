@@ -1,0 +1,12 @@
+{
+  "id": "mig_cputjh0j2913t7idtr4g",
+  "parentID": "mig_cps8vrh9lhsg5enuj2k0",
+  "checksum": "1:18d6a01895227464e5c46622eba1cc4d5571a6468f5256a3502d4815ff7a0256",
+  "operations": [
+    {
+      "addTable": {
+        "table": "pots"
+      }
+    }
+  ]
+}

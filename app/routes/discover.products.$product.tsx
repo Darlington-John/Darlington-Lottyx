@@ -14,16 +14,10 @@ import winnerImg from '~/assets/images/winners.png'
 import Button from '~/components/buttons';
 import Popup from '~/components/popup';
 import useForm from '~/components/hooks/useForm';
-import LottoNumberGenerator from '~/components/lotto-spinner';
-import BackgroundPurpleImg from '~/assets/images/BackgroundPurple.png'
-import NewBid from "~/components/new-bid";
+import BackgroundPurpleImg from '~/assets/images/BackgroundPurple.png';
 import { getXataClient } from "utils/xata";
 import { authenticator } from "utils/auth.server";
-import Bid from '~/components/bids';
 
-// export const loader: LoaderFunction = async ({ request }) => {
-
-// };
 
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData();
@@ -92,7 +86,6 @@ export const loader: LoaderFunction = async ({ params , request }) => {
 };
 
 const ProductPage = () => {
-  const { bids, user } = useLoaderData();
   const {mainNumbers} = useForm();
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false);
@@ -117,11 +110,11 @@ const ProductPage = () => {
 
 
   const handleClick = () => {
-    // toggleBid();
+ 
     toggleSucessPopup();
     resetNumbers();
 
-    const formId = "bidForm"; // Specify the ID of the form you want to submit
+    const formId = "bidForm";
     const form = document.getElementById(formId);
     const actionInput = form.querySelector('input[name="action"]');
     if (form && actionInput) {
@@ -149,7 +142,7 @@ const ProductPage = () => {
         setIsVisible(true);
       } else {
         setIsVisible(false);
-        setTimeout(() => setEditBid(false), 500); // Delay hiding the component until fade-out animation is done
+        setTimeout(() => setEditBid(false), 500);
       }
       
     };
@@ -257,7 +250,7 @@ setEditBid(false);
 </div>
 
 <Cards  background={winnerImg} annoucement   countdown herobg place="center" winAnnouce annouce='Winners will be announced in'   />
-{/* <input type="text" name="url" id="url" className="border-2 rounded-md mr-8 px-3 py-1"  defaultValue={product?.price} /> */}
+
 <div className='flex flex-col gap-2 w-full'>
 <div className='py-1 items-center gap-1 flex w-full justify-center relative overflow-hidden'>
   <div className='absolute z-10 bg-white left-0 p-9  blur-3xl  puff'>
@@ -266,7 +259,7 @@ setEditBid(false);
 <img src={coinImg} className='w-[32px] h-[32px] relative z-20 ' alt=""/>
 <h1 className='text-[34px] font-semibold relative z-20'>
 {product?.price}
-{/* {isUnderstood ===true? 'understood' :'not understood' } */}
+
 </h1>
 
   
@@ -308,7 +301,7 @@ onChange={handleEditBidCodeChange}
      src={BackgroundPurpleImg}
      className="w-full h-full fixed  z-10 top-0" alt=""
    />
-   <button className='fixed top-20 z-50 left-0 -translate-x-2/4  left-[50%] bg-[#00000040]  rounded-md py-1 px-2 flex gap-1 text-sm items-center' onClick={toggleSucessPopup}><img src={xIcon} alt=""/><span>Hello</span></button>
+   <button className='fixed top-20 z-50 left-0 -translate-x-2/4  left-[50%] bg-[#00000040]  rounded-md py-1 px-2 flex gap-1 text-sm items-center' onClick={toggleSucessPopup}><img src={xIcon} alt=""/><span>Close</span></button>
 <div className='flex items-center justify-center w-full relative z-50 flex-col gap-6'>
 <div className='flex flex-col items-center gap-4 justify-center'>
 <img src={confettiImg} alt=""/>

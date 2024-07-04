@@ -1,29 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import earImg from "~/assets/images/ear.png"
-// import laptopImg from '~/assets/images/laptop.png'
-// import phoneImg from '~/assets/images/phone.png'
-// // import HotProducts from './hot-products';
-// export const products = [
-
-//     {id: 1,
-//         product: earImg,
-//         name: 'S20 Wireless Bluetooth Earphone Touch LED Stereo Audio Black',
-//         price: '10',
-//         hot:  true
-//     },
-//     {id: 2,
-//         product: laptopImg,
-//         name: 'HP EliteBook Core i7 11th generation',
-//         price: '500',
-//         hot:  true
-//     },
-//     {id: 3,
-//         product: phoneImg,
-//         name: 'Apple iPhone 15 Pro Max',
-//         price: '750',
-//         hot:  true
-//     },
-// ]
+import  { useState, useEffect } from 'react';
 const CountdownTimer = () => {
   const calculateTargetDate = () => {
     const now = new Date().getTime();
