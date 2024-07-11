@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq3cptl3todh43hdu9pg",
+  "parentID": "mig_cq3cppt3todh43hdu9og",
+  "checksum": "1:1ef9ffb3917399c1b181d8c06609669d21fd9bcaffa6e534375368b05e7ae8ca",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "multiply5",
+          "type": "bool"
+        },
+        "table": "pots"
+      }
+    }
+  ]
+}

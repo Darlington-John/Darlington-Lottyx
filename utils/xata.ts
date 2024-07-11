@@ -39,6 +39,7 @@ const tables = [
       { name: "name", type: "string", notNull: true, defaultValue: "John" },
       { name: "surname", type: "string", notNull: true, defaultValue: "Doe" },
       { name: "phone", type: "text", notNull: true, defaultValue: "0" },
+      { name: "profile", type: "text" },
     ],
     revLinks: [
       { column: "user", table: "resolutions" },
@@ -72,6 +73,11 @@ const tables = [
       { name: "Pot4", type: "int" },
       { name: "user", type: "link", link: { table: "users" } },
       { name: "pay", type: "int" },
+      { name: "won", type: "bool" },
+      { name: "multiply3", type: "bool" },
+      { name: "multiply5", type: "bool" },
+      { name: "multiply10", type: "bool" },
+      { name: "multiply1p5", type: "bool" },
     ],
   },
 ] as const;

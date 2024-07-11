@@ -1,0 +1,13 @@
+{
+  "id": "mig_cq3adqs2h66tuvcu5iug",
+  "parentID": "mig_cq3905fitr0rnr6mti7g",
+  "checksum": "1:0251d8a19feb6fd77343acddaf5d29ad62884ff89875c6fe31c86a20d24692db",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "won",
+        "table": "pots"
+      }
+    }
+  ]
+}

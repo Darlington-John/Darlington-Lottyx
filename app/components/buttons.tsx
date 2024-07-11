@@ -13,7 +13,7 @@ shrink-0 `} style={{backgroundColor: `${props.bg}`, padding: `${props.pad}`}}>
 )}
 {props.icon && (
     <div  className={`w-auto ${props.shadow && 'action'}   rounded-${props.rounded}`} style={{ padding: `${props.pad}`, backgroundColor: `${props.bg}`}}>
-    <img src={props.img} alt="" />
+    <img src={props.img} alt="" className={`w-${props.imgWidth} rounded-full`} />
     </div>
 )}
 {props.action && (<h1 className={`text-white   font-semibold text-sm  w-full text-center     rounded-${props.rounded}   ${props.shadow && 'action'}  h-[40px]`} style={{backgroundColor: `${props.bg}`, padding: `${props.pad}`}}>

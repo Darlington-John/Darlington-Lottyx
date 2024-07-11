@@ -71,17 +71,6 @@ function JackpotTickets() {
     const hideJackpot = () => {
         setShowJackpot(false);
       };
-      const [activeButton, setActiveButton] = useState(0);
-
-      const handleButtonClick = (id) => {
-        setActiveButton(id);
-      };
-      const universalIndex = pots.map((pot, index) => ({
-        ...pot,
-        universalIndex: index + 1,
-      }));
-      const lostTickets = universalIndex.filter((pot) => pot.won === false);
-const wonTickets = universalIndex.filter((pot) => pot.won === true);
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
@@ -99,12 +88,7 @@ const wonTickets = universalIndex.filter((pot) => pot.won === true);
           ) : (
 <div className='w-full flex flex-col  gap-5 relative'>
 {showJackpot && (      <Cards  background={styleImg} annoucement  close  info="NEXT JACKPOT IN…" countdown  herobg  hero={smileMan} onClick={hideJackpot} moreInfo/>)}
-<Link to={"/jackpot"} className='bg-[#C0F8D6] shadow py-2  px-4  rounded-lg font-semibold text-[#05662C] fixed bottom-20  center'>
 
-<button  onClick={PlayAgain}>
-  Play ticket again
-</button>
-</Link>
 <h1 className='font-semibold text-[22px]'>
 Active tickets
 </h1>
@@ -112,82 +96,27 @@ Active tickets
 <p className='text-[#A7B1AB] text-sm '>
 Here are tickets you played for this week. Play multiple times to increase your chances of winning.
 </p>
-<div className="p-4 w-full  border border-[#444A47]  rounded-lg  p-[2px] w-full flex  bg-[#171817]" >
-            <button 
-              className={`flex items-center w-full   justify-center  py-1 px-2 rounded-lg ${activeButton === 0 ? 'bg-[#2D312F]' : ''}`}
-              onClick={() => handleButtonClick(0)}>
-              <h1>All</h1>
-            </button>
-            <button className={`flex items-center w-full   justify-center  py-1 px-2 rounded-lg ${activeButton === 1 ? 'bg-[#2D312F]' : ''}`}  onClick={() => handleButtonClick(1)}>
-              <h1>Won</h1>
-            </button>
-            <button className={`flex items-center w-full   justify-center  py-1 px-2 rounded-lg ${activeButton === 2 ? 'bg-[#2D312F]' : ''}`}  onClick={() => handleButtonClick(2)}>
-              <h1>Lost</h1>
-            </button>
-        </div>
+<div className='border border-[#444A47] flex justify-between w-full items-center bg-[#2D312F]  py-2 px-3 rounded-lg'>
+<div className='flex gap-2 items-center'>
+  <img src={warningImg} alt=''/>
+  <h1 className='text-sm'>  Tickets expires on Apr 15, 2024</h1>
+
+</div>
+<Button icon={true} img={rightIcon} bg="#18A551" rounded="[4px]" pad="8px" shadow/>
+</div>
 </div>
 
-<div className='flex flex-col gap-3'>
-{activeButton === 0 && (
-      <div className="flex flex-col gap-3">
-        {universalIndex.map((data) => (
-          <Cards
-            tickets
-            data={data}
-            {...data}
-            key={data.id}
-            id={data.universalIndex}
-            link={`/jackpot/tickets/${data.id}?index=${data.universalIndex}`}
-            date={data.xata ? formatDate(data.xata.createdAt) : 'No creation date'}
-            pay={data.pay}
-          />
-        ))}
-      </div>
-    )}
+  <div className='flex flex-col gap-3'>
+{pots.map((data, index) => (
+  <Cards tickets  data={data} {...data} key={data.id} id={index + 1} 
+  link={`/jackpot/tickets/${data.id}?index=${index + 1}`}
+    date={data.xata ? formatDate(data.xata.createdAt) 
+    : 'No creation date'} pay={data.pay}
+    
+    />
+))}
 
-{activeButton === 1 && (
-      <div className="flex flex-col gap-3">
-        {wonTickets.length === 0 ? (
-          <p>No won tickets</p>
-        ) : (
-          wonTickets.map((data) => (
-            <Cards
-              tickets
-              data={data}
-              {...data}
-              key={data.id}
-              id={data.universalIndex}
-              link={`/jackpot/tickets/${data.id}?index=${data.universalIndex}`}
-              date={data.xata ? formatDate(data.xata.createdAt) : 'No creation date'}
-              pay={data.pay}
-            />
-          ))
-        )}
-      </div>
-    )}
-
-    {activeButton === 2 && (
-      <div className="flex flex-col gap-3">
-        {lostTickets.length === 0 ? (
-          <p>No lost tickets</p>
-        ) : (
-          lostTickets.map((data) => (
-            <Cards
-              tickets
-              data={data}
-              {...data}
-              key={data.id}
-              id={data.universalIndex}
-              link={`/jackpot/tickets/${data.id}?index=${data.universalIndex}`}
-              date={data.xata ? formatDate(data.xata.createdAt) : 'No creation date'}
-              pay={data.pay}
-            />
-          ))
-        )}
-      </div>
-    )}
-    </div>
-
+</div>
 </div>
           )}</>
 

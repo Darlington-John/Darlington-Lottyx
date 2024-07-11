@@ -1,8 +1,9 @@
 import { Authenticator, AuthorizationError } from "remix-auth";
-import { sessionStorage } from "./session.server";
+
 import { FormStrategy } from "remix-auth-form";
 import { getXataClient, UsersRecord } from "./xata";
 import bcrypt from "bcryptjs";
+import { sessionStorage } from "./session.server";
 
 const authenticator = new Authenticator<UsersRecord>(sessionStorage);
 

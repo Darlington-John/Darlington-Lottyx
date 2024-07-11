@@ -212,10 +212,16 @@ setSelectedNumbers(defaultSelectedNumbers);
       setTimeout(() => setPaySucessful(false), 500);
     }
   };
+
+  const [deleteAcctPop, setDeleteAcctPop] = useState(false);
+  const toggleDeletePopup = () => {
+    setDeleteAcctPop(prevState => !prevState);
+  };
+
   return (
     <FormContext.Provider value={{ 
        clearFormState, isVisible, popupRef, togglePopup, showInfo, setShowInfo, isUnderstood, isBiddingVisible,popupBidRef, toggleBid, bidding,setBidding, mainNumbers, minorNumbers, plusNumbers, isSpinning, getRandomNumber , generateLottoNumbers, resetNumbers, handlePotsSubmit, selectedNumbers, setSelectedNumbers, handleDivClick, handleNumberClick , handleChange, getPotText, activeDiv, setActiveDiv, resetToDefault, pay, setPay, isPayVisible, setIsPayVisible, payRef, togglePayPopup, error, paySucessful, setPaySucessful, isPaySucessfulVisible, setIsPaySucessfulVisible, paySucessfulRef, togglePaySucessfulPopup, toggleJackpotSucessfulPopup, jackpotSucessful, setJackpotSucessful,
-       isJackpotSucessfulVisible, setIsJackpotSucessfulVisible, PlayAgain
+       isJackpotSucessfulVisible, setIsJackpotSucessfulVisible, PlayAgain, toggleDeletePopup, deleteAcctPop, setDeleteAcctPop
 }}>
       {/* <button className='p-4 bg-[#fff] fixed top-0 z-20' onClick={clearFormState}>
 

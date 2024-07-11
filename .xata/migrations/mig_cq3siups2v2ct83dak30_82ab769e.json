@@ -1,0 +1,13 @@
+{
+  "id": "mig_cq3siups2v2ct83dak30",
+  "parentID": "mig_cq3ctprjkumtidebn710",
+  "checksum": "1:82ab769ea8c4f77d48afe694582b905671d4ce398b07e827c5942d502e458b19",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "multiply1p5",
+        "table": "pots"
+      }
+    }
+  ]
+}

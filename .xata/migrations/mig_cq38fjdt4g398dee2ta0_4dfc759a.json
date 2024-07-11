@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq38fjdt4g398dee2ta0",
+  "parentID": "mig_cq1abv2ues1u0f8mfg40",
+  "checksum": "1:4dfc759a512bc180d28d5bab2744d5f094c67704b215095004d600ff6e8416d3",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "won",
+          "type": "bool"
+        },
+        "table": "pots"
+      }
+    }
+  ]
+}

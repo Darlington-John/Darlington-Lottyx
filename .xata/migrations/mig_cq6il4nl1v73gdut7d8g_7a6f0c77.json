@@ -1,0 +1,13 @@
+{
+  "id": "mig_cq6il4nl1v73gdut7d8g",
+  "parentID": "mig_cq6iktfdgd5bjvgc5p0g",
+  "checksum": "1:7a6f0c7751bcc5b84e365797d0fc26a83cb7a76578f4869c85c10ab9b1894066",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "profile",
+        "table": "bids"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "mig_cq3900vitr0rnr6mti6g",
+  "parentID": "mig_cq38fjdt4g398dee2ta0",
+  "checksum": "1:098a1fe323fe9953f447216b2cc4b0e4d9094c5287bc6c9dd67ddd9cba66d0ab",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "won",
+        "table": "pots"
+      }
+    }
+  ]
+}

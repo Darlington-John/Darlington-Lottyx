@@ -1,0 +1,17 @@
+{
+  "id": "mig_cq3905fitr0rnr6mti7g",
+  "parentID": "mig_cq3900vitr0rnr6mti6g",
+  "checksum": "1:d72269198530cebda1172346b5f690439d1d3edf6aaabef0b693318ac6f7f6fa",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "won",
+          "type": "bool",
+          "defaultValue": "false"
+        },
+        "table": "pots"
+      }
+    }
+  ]
+}

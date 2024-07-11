@@ -4,6 +4,7 @@ import CountdownTimer from "./countdown";
 import coinImg from '~/assets/icons/coin.png'
 import { Link } from "@remix-run/react";
 import ticketImg from '~/assets/images/Ticket.png'
+import linkIcon from '~/assets/icons/chevron-right.png'
 const Cards = (props: any) => {
     return ( <> 
     {props.products && (
@@ -56,6 +57,25 @@ const Cards = (props: any) => {
 )}
         </div>
     )}
+    {props.sucess && (
+        <div className=" p-4 w-full rounded-lg py-xl px-2xl flex items-center    text-white flex-col gap-1 relative overflow-hidden shrink-0 text-center" style={{
+            backgroundImage: `url(${props.background})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}>
+<h1 className="font-semibold  text-[9px] text-center">
+{props.sucessHeader}
+</h1>
+<h1 className="font-semibold  text-sm text-center">
+{props.sucessBody}
+</h1>
+{props.when && (
+    <h1 className="font-semibold  text-[9px] text-center">
+{props.whenText}
+</h1>
+)}
+          </div>
+    )}
     {props.information  && (
         <div className="flex gap-2 items-start w-full   rounded-lg text-sm  bg-[#00000040] p-3  text-start">
 <img src={props.infoImg} alt=""/>
@@ -77,6 +97,17 @@ const Cards = (props: any) => {
 </div>
 </div>
 <Button label={true} labelImg={coinImg} labelText={props.pay} bg="#444A47" rounded="[4px]" pad=" 2px 4px"/>
+        </div>
+        </Link>
+    )}
+    {props.profile && (
+        <Link to={props.link} className="w-full">
+        <div className="flex items-center justify-between w-full  rounded-lg  h-[40px] bg-[#171817] px-2">
+<div className="flex items-center gap-2">
+<img src={props.icon} alt=""/>
+<h1>{props.content}</h1>
+</div>
+<img src={linkIcon} alt=""/>
         </div>
         </Link>
     )}

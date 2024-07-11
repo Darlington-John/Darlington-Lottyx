@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq6iktfdgd5bjvgc5p0g",
+  "parentID": "mig_cq63sdfqrg0lse1mmv60",
+  "checksum": "1:74a6e09507f6cbd591529a0db3b276804aedbd2b806f45f2bab52625a57f834f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "profile",
+          "type": "text"
+        },
+        "table": "bids"
+      }
+    }
+  ]
+}

@@ -1,17 +1,20 @@
-import type { ActionFunction,  LoaderFunction } from "@remix-run/node";
+import { createCookie, type ActionFunction,  type LoaderFunction } from "@remix-run/node";
 import { authenticator } from "utils/auth.server";
 import bcrypt from "bcryptjs";
 import { getXataClient } from "utils/xata";
 import splashDarkImg from "./../assets/images/splashDark.png"
 import nigImg from "./../assets/icons/nig.png"
+import imageImg from '~/assets/icons/image.png'
+import leftIcon from '~/assets/icons/chevron-right.png'
 import arrDownImg from "./../assets/icons/arrDown.png"
 import eyeOpenImg from "./../assets/icons/eyeOpen.png"
 import eyeCloseImg from "./../assets/icons/eyeClose.png"
 import dangerIcon from "./../assets/icons/danger.svg"
 import warningIcon from "./../assets/icons/warning.svg"
 import googleImg from "./../assets/icons/google.png"
-import {  useState} from 'react';
-import useForm from "~/components/hooks/useForm"
+import {  useCallback, useState, useRef} from 'react';
+import { cloudinary } from "./../../cloudinary.server"
+
 import { Link,  Form, json, useLoaderData, redirect } from "@remix-run/react"
 const loader: LoaderFunction = async ({ request }) => {
   const user = await authenticator.isAuthenticated(request, {
@@ -25,28 +28,55 @@ const loader: LoaderFunction = async ({ request }) => {
 
   return json({ user });
 };
+
 const action: ActionFunction = async ({ request }) => {
   try {
-    // Read form data once
     const form = await request.formData();
     const email = form.get('email') as string;
     const password = form.get('password') as string;
     const phone = form.get('phone') as string;
     const name = form.get('name') as string;
     const surname = form.get('surname') as string;
+    const profileFile = form.get('profile') as File;
 
     const xata = getXataClient();
-    
+
     // Check if user already exists
     const existingUser = await xata.db.users.filter({ email }).getFirst();
     if (existingUser) {
       return redirect("/signup?error=user-exists");
     }
 
+    // Upload profile image to Cloudinary
+    let profileUrl = '';
+    if (profileFile) {
+      const uploadResult = await new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream({ folder: 'profiles' }, (error, result) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(result);
+          }
+        });
+        const reader = profileFile.stream().getReader();
+        const push = async ({ done, value }) => {
+          if (done) {
+            uploadStream.end();
+            return;
+          }
+          uploadStream.write(value);
+          reader.read().then(push);
+        };
+        reader.read().then(push);
+      });
+
+      profileUrl = uploadResult.secure_url;
+    }
+
     // Hash password and create user
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    await xata.db.users.create({ email, password: hashedPassword, phone, name, surname });
+    await xata.db.users.create({ email, password: hashedPassword, phone, name, surname, profile: profileUrl });
 
     // Redirect to login for authentication
     return redirect("/login");
@@ -56,7 +86,6 @@ const action: ActionFunction = async ({ request }) => {
     throw error;
   }
 };
-
 
 const Signup = () => {
   const { user } = useLoaderData();
@@ -158,6 +187,19 @@ const Signup = () => {
       return { color: 'black', fontSize: 12}; 
     }
   };
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleDivClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click(); // Trigger file input click
+    }
+  };
+  const [profileFile, setProfileFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setProfileFile(file); // Set the file directly
+  };
     return (  
       <div 
       className=" flex  h-screen w-full    items-center    justify-center   overflow-auto"
@@ -191,9 +233,10 @@ Log in
 </Link>
 </div>
 </div>
-     <Form method="post" className="px-6 gap-8 flex flex-col" >
+     <Form method="post" className="px-6 gap-8 flex flex-col" encType="multipart/form-data" >
      <div 
       className="items-start gap-2 w-full  flex flex-col">
+
         <label htmlFor="phone" 
         className="text-base text-[#fff]">
             Phone number
@@ -299,7 +342,29 @@ className="w-5  h-5"
         </div>
         {errorPwdMessage && <h1 className="text-[12px] text-[#ff8d8d]">{errorPwdMessage}</h1>}
       </div>
- 
+      <div className="items-start gap-1 w-full flex flex-col">
+        <div className="flex items-center justify-between w-full  rounded-lg  h-[40px] bg-[#2D312F] px-2 border  border-[#444A47]" onClick={ handleDivClick}>
+<div className="flex items-center gap-2" >
+<img src={imageImg} alt=""/>
+<h1>Profile image</h1>
+</div>
+<img src={leftIcon} alt=""/>
+        </div>
+        <div className={`w-full bg-[#2D312F]  rounded-md border  border-[#444A47] border-2 flex-row px-2 py-1 justify-beeen  items-center flex  hidden`}>
+
+        <input className="text-sm text-[#fff] w-full h-full py-1 px-2   outline-none bg-transparent"
+   type="file"
+   accept="image/*"
+   name="profile"
+   onChange={handleFileChange}
+   ref={fileInputRef}
+/>
+
+
+
+        </div>
+        {errorPwdMessage && <h1 className="text-[12px] text-[#ff8d8d]">{errorPwdMessage}</h1>}
+      </div>
       <button   type="button" 
         onClick={handleButtonClick}
         className="text-base text-[#fff] w-full  py-1 px-2  bg-[#18A551] items-center rounded-md flex justify-center text-white text-base py-2 text-center"  >

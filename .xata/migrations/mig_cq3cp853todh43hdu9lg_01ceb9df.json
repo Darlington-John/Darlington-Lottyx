@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq3cp853todh43hdu9lg",
+  "parentID": "mig_cq3aduk2h66tuvcu5ivg",
+  "checksum": "1:01ceb9dfc877089d8e6bbcbea66db3846d63ce450dfc0589aa8d6f32be232ee3",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "1p5",
+          "type": "bool"
+        },
+        "table": "pots"
+      }
+    }
+  ]
+}
